@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Resilient Brain, A Framework for Navigating Disruption by Werner Müller</title>
+<meta name="description" content="The Resilient Brain is a research-grounded framework that trains your brain to handle constant disruption, stay relevant through change, and build a life that doesn't depend on conditions staying the same. By Werner Müller.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Werner Müller">
+<link rel="canonical" href="https://thehaveframework.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Resilient Brain, A Framework for Navigating Disruption">
+<meta property="og:description" content="The world keeps changing. The question isn't whether you'll face disruption. It's whether your brain is trained to handle it. A research-grounded framework by Werner Müller.">
+<meta property="og:site_name" content="The Resilient Brain">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:   #0F0F0E;
+  --off:     #1A1918;
+  --dark:    #2A2825;
+  --mid:     #6B6560;
+  --muted:   #9C948C;
+  --border:  #E0D9D2;
+  --sand:    #EDE7DF;
+  --cream:   #F5F0E8;
+  --white:   #FDFCFA;
+  --blue:    #3D6B6B;
+  --blue-lt: #5A8A8A;
+  --blue-dk: #2A4D4D;
+  --blue-bg: #E8EEED;
+  --od:      #FDFCFA;
+  --od-70:   rgba(253,252,250,0.70);
+  --mw: 1100px;
+  --px: clamp(1.25rem, 5vw, 3.5rem);
+  --py: clamp(3rem, 7vw, 5.5rem);
+  --tap: 52px;
+  --ts-xs:   0.72rem;
+  --ts-sm:   0.85rem;
+  --ts-base: 1rem;
+  --ts-lg:   1.1rem;
+  --ts-xl:   1.25rem;
+  --ts-2xl:  1.6rem;
+  --ts-hero: clamp(2.2rem, 5vw, 3.8rem);
+}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: 'Figtree', sans-serif; font-size: var(--ts-base); line-height: 1.6; color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(15,15,14,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+.nav-inner { max-width: var(--mw); margin: 0 auto; padding: 0 var(--px); height: 64px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: flex; flex-direction: column; gap: 1px; text-decoration: none; }
+.nav-logo-name { font-family: 'Nunito Sans', sans-serif; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.04em; color: var(--od); }
+.nav-logo-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a { font-size: var(--ts-sm); color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--od); }
+.nav-cta { font-family: 'Figtree', sans-serif; font-size: var(--ts-xs); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--od); background: var(--blue); padding: 0.5rem 1rem; text-decoration: none; transition: background 0.15s; white-space: nowrap; }
+.nav-cta:hover { background: var(--blue-dk); }
+.nav-mobile { display: none; }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta-desktop { display: none; }
+}
+
+/* ── HERO ── */
+.hero { background: var(--black); padding: var(--py) var(--px); min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+.hero-grid { position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.035) 1px, transparent 0); background-size: 28px 28px; pointer-events: none; }
+.hero-glow { position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, var(--blue) 0%, transparent 65%); opacity: 0.09; pointer-events: none; }
+.hero-glow-2 { position: absolute; bottom: -80px; left: 20%; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, var(--blue) 0%, transparent 65%); opacity: 0.05; pointer-events: none; }
+.hero-inner { max-width: var(--mw); margin: 0 auto; width: 100%; position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.hero-kicker { font-family: 'JetBrains Mono', monospace; font-size: var(--ts-xs); letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-lt); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+.hero-kicker::before { content: ''; display: block; width: 24px; height: 1px; background: var(--blue-lt); }
+.hero-title { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-hero); font-weight: 500; line-height: 1.1; letter-spacing: 0.02em; color: var(--od); margin-bottom: 1.5rem; }
+.hero-title em { color: var(--blue-lt); font-style: normal; }
+.hero-divider { width: 48px; height: 2px; background: var(--blue); margin-bottom: 1.5rem; }
+.hero-sub { font-size: var(--ts-lg); line-height: 1.8; color: var(--od-70); margin-bottom: 2.5rem; max-width: 480px; }
+.hero-cta { display: flex; flex-direction: column; gap: 0.85rem; align-items: flex-start; }
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; font-family: 'Figtree', sans-serif; font-size: var(--ts-sm); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; padding: 0 1.75rem; height: var(--tap); background: var(--blue); color: var(--od); cursor: pointer; border: none; transition: background 0.15s; white-space: nowrap; }
+.btn-primary:hover { background: var(--blue-dk); }
+.btn-ghost { display: inline-flex; align-items: center; justify-content: center; font-family: 'Figtree', sans-serif; font-size: var(--ts-sm); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; padding: 0 1.75rem; height: var(--tap); background: transparent; color: var(--od); cursor: pointer; border: 1px solid rgba(255,255,255,0.2); transition: all 0.15s; white-space: nowrap; }
+.btn-ghost:hover { border-color: var(--od); }
+.hero-link { font-size: var(--ts-sm); color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
+.hero-link:hover { color: var(--od-70); }
+
+/* Brain visual right side */
+.hero-right { display: flex; flex-direction: column; gap: 1px; }
+.brain-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; transition: background 0.2s; }
+.brain-stat:hover { background: rgba(61,107,107,0.12); }
+.brain-stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-lt); }
+.brain-stat-title { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-base); font-weight: 500; color: var(--od); }
+.brain-stat-desc { font-size: var(--ts-sm); color: rgba(255,255,255,0.45); line-height: 1.55; }
+.brain-stat-bar { height: 2px; background: rgba(255,255,255,0.06); margin-top: 0.5rem; position: relative; overflow: hidden; }
+.brain-stat-fill { position: absolute; inset: 0; background: var(--blue); transform-origin: left; }
+
+/* ── STATS BAR ── */
+.stats-bar { background: var(--blue-dk); padding: 1.25rem var(--px); }
+.stats-inner { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.stat { text-align: center; }
+.stat-n { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-2xl); font-weight: 500; color: var(--od); letter-spacing: 0.02em; line-height: 1; }
+.stat-l { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 0.35rem; }
+
+/* ── SECTIONS ── */
+.section { padding: var(--py) var(--px); }
+.section-inner { max-width: var(--mw); margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: var(--ts-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.eyebrow::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--border); }
+.section-title { font-family: 'Nunito Sans', sans-serif; font-weight: 500; font-size: clamp(1.7rem,3.5vw,2.6rem); line-height: 1.2; letter-spacing: 0.02em; color: var(--black); margin-bottom: 0.9rem; }
+.section-lead { font-size: var(--ts-lg); line-height: 1.8; color: var(--mid); max-width: 640px; margin-bottom: 2.5rem; }
+.alt-bg { background: var(--cream); }
+
+/* ── DISRUPTION REALITY ── */
+.disruption-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2.5rem; }
+.dis-card { background: var(--white); padding: 1.75rem; }
+.dis-card-n { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.dis-card-stat { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 500; color: var(--black); line-height: 1; margin-bottom: 0.5rem; }
+.dis-card-title { font-size: var(--ts-base); font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; }
+.dis-card-body { font-size: var(--ts-sm); color: var(--mid); line-height: 1.65; }
+
+/* ── BRAIN SCIENCE ── */
+.science-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.science-explainer { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.sci-row { background: var(--white); padding: 1.25rem 1.5rem; display: flex; gap: 1.25rem; align-items: flex-start; cursor: pointer; transition: background 0.15s; }
+.sci-row:hover, .sci-row.active { background: var(--blue-bg); }
+.sci-row.active { border-left: 3px solid var(--blue); }
+.sci-letter { font-family: 'Nunito Sans', sans-serif; font-size: 1.6rem; font-weight: 500; color: var(--border); line-height: 1; flex-shrink: 0; width: 32px; transition: color 0.15s; }
+.sci-row.active .sci-letter { color: var(--blue); }
+.sci-text-head { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-base); font-weight: 500; color: var(--black); margin-bottom: 0.2rem; }
+.sci-text-body { font-size: var(--ts-sm); color: var(--mid); line-height: 1.6; }
+.science-detail { background: var(--black); padding: 2rem; color: var(--od); position: sticky; top: 80px; }
+.sci-detail-label { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-lt); margin-bottom: 1rem; }
+.sci-detail-title { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-xl); font-weight: 500; color: var(--od); margin-bottom: 1rem; line-height: 1.3; }
+.sci-detail-body { font-size: var(--ts-sm); line-height: 1.75; color: rgba(255,255,255,0.65); margin-bottom: 1.25rem; }
+.sci-detail-mechanism { background: rgba(61,107,107,0.2); border: 1px solid rgba(61,107,107,0.3); padding: 1rem; }
+.sci-detail-mechanism-label { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-lt); margin-bottom: 0.4rem; }
+.sci-detail-mechanism-text { font-size: var(--ts-xs); color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* ── WHAT CHANGES ── */
+.changes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.change-card { background: var(--white); padding: 1.5rem; }
+.change-card-before { font-size: var(--ts-sm); color: var(--muted); text-decoration: line-through; text-decoration-color: #D0C8C0; margin-bottom: 0.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); line-height: 1.5; }
+.change-card-after { font-size: var(--ts-sm); color: var(--blue-dk); font-weight: 500; line-height: 1.5; padding-top: 0.5rem; }
+.change-card-after::before { content: '→ '; color: var(--blue); }
+
+/* ── THE METHOD ── */
+.method-intro-block { background: var(--black); padding: 2.5rem; margin-bottom: 2rem; }
+.method-intro-block p { font-size: var(--ts-lg); line-height: 1.8; color: rgba(255,255,255,0.75); }
+.method-intro-block strong { color: var(--od); }
+.have-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.have-card { background: var(--white); padding: 1.75rem 1.5rem; border-top: 3px solid transparent; transition: all 0.15s; }
+.have-card:hover { background: var(--blue-bg); border-top-color: var(--blue); }
+.have-letter { font-family: 'Nunito Sans', sans-serif; font-size: 3rem; font-weight: 500; color: var(--border); line-height: 1; margin-bottom: 0.5rem; transition: color 0.15s; }
+.have-card:hover .have-letter { color: var(--blue); }
+.have-name { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-base); font-weight: 500; color: var(--black); margin-bottom: 0.3rem; }
+.have-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 0.6rem; }
+.have-body { font-size: var(--ts-sm); color: var(--mid); line-height: 1.65; }
+
+/* ── BRAIN SHIFTS ── */
+.shifts-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.shift-card { background: var(--white); padding: 1.5rem; }
+.shift-n { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; }
+.shift-title { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-base); font-weight: 500; color: var(--black); margin-bottom: 0.4rem; }
+.shift-body { font-size: var(--ts-sm); color: var(--mid); line-height: 1.65; }
+.shift-science { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; color: var(--muted); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); letter-spacing: 0.04em; }
+
+/* ── VENTURE BRIDGE ── */
+.bridge { background: var(--blue-dk); padding: var(--py) var(--px); }
+.bridge-inner { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.bridge-left .eyebrow { color: var(--blue-lt); }
+.bridge-left .eyebrow::after { background: rgba(255,255,255,0.15); }
+.bridge-title { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.7rem,3vw,2.4rem); font-weight: 500; color: var(--od); line-height: 1.2; margin-bottom: 1.25rem; }
+.bridge-body { font-size: var(--ts-lg); line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
+.bridge-points { display: flex; flex-direction: column; gap: 1px; }
+.bridge-point { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); padding: 1rem 1.25rem; display: flex; gap: 1rem; align-items: flex-start; }
+.bridge-point-n { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; color: var(--blue-lt); flex-shrink: 0; margin-top: 2px; }
+.bridge-point-text { font-size: var(--ts-sm); color: rgba(255,255,255,0.65); line-height: 1.6; }
+.bridge-point-text strong { color: var(--od); display: block; margin-bottom: 0.2rem; }
+.bridge-right { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; }
+.bridge-course-label { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-lt); margin-bottom: 0.75rem; }
+.bridge-course-title { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-xl); font-weight: 500; color: var(--od); margin-bottom: 0.5rem; }
+.bridge-course-price { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-2xl); font-weight: 500; color: var(--od); margin-bottom: 1.25rem; }
+.bridge-course-price span { font-size: var(--ts-sm); color: rgba(255,255,255,0.4); font-family: 'Figtree', sans-serif; font-weight: 400; }
+.bridge-list { list-style: none; margin-bottom: 1.5rem; }
+.bridge-list li { font-size: var(--ts-sm); color: rgba(255,255,255,0.6); padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; gap: 0.5rem; align-items: baseline; }
+.bridge-list li:last-child { border-bottom: none; }
+.bridge-list li::before { content: '→'; color: var(--blue-lt); font-size: 0.65rem; flex-shrink: 0; }
+.btn-bridge { display: flex; align-items: center; justify-content: center; font-family: 'Figtree', sans-serif; font-size: var(--ts-sm); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; padding: 0 1.75rem; height: var(--tap); background: var(--od); color: var(--black); cursor: pointer; border: none; transition: background 0.15s; }
+.btn-bridge:hover { background: var(--blue-bg); }
+.bridge-cta-note { font-size: var(--ts-xs); color: rgba(255,255,255,0.3); margin-top: 0.75rem; text-align: center; }
+
+/* ── RESEARCH ── */
+.research-block { border: 1px solid var(--border); background: var(--white); margin-bottom: 1rem; }
+.research-toggle { width: 100%; text-align: left; background: var(--cream); border: none; padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: var(--tap); transition: background 0.15s; }
+.research-toggle:hover { background: var(--sand); }
+.research-toggle-left { display: flex; align-items: center; gap: 0.85rem; }
+.research-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); background: var(--blue-bg); padding: 0.25rem 0.5rem; flex-shrink: 0; }
+.research-title { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-base); font-weight: 500; color: var(--black); }
+.research-icon { font-size: 1.4rem; color: var(--blue); transition: transform 0.2s; flex-shrink: 0; line-height: 1; }
+.research-toggle[aria-expanded="true"] .research-icon { transform: rotate(45deg); }
+.research-content { display: none; padding: 1.75rem 1.5rem; border-top: 1px solid var(--border); }
+.research-content.open { display: block; }
+.research-body { font-size: var(--ts-base); line-height: 1.8; color: var(--dark); margin-bottom: 1.25rem; }
+.research-quote { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-lg); line-height: 1.5; color: var(--dark); padding: 1.25rem 1.5rem; border-left: 3px solid var(--blue); background: var(--blue-bg); margin: 1.5rem 0; }
+.research-quote cite { display: block; font-size: var(--ts-xs); color: var(--mid); margin-top: 0.5rem; font-style: normal; letter-spacing: 0.05em; }
+.research-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); margin-top: 1.5rem; font-size: var(--ts-sm); }
+.research-table th { background: var(--black); color: var(--od); font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.65rem 1rem; text-align: left; font-weight: 400; }
+.research-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--dark); vertical-align: top; line-height: 1.5; }
+.research-table tr:last-child td { border-bottom: none; }
+.research-table tr:nth-child(even) td { background: var(--cream); }
+.research-table td:first-child { font-weight: 500; color: var(--blue-dk); white-space: nowrap; }
+.research-source { font-size: var(--ts-xs); color: var(--muted); margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+
+/* ── FAQ ── */
+.faq-list { border: 1px solid var(--border); overflow: hidden; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { width: 100%; text-align: left; background: var(--white); border: none; padding: 1.25rem 1.5rem; font-family: 'Figtree', sans-serif; font-size: var(--ts-base); font-weight: 600; color: var(--black); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; transition: background 0.12s; min-height: var(--tap); }
+.faq-q:hover { background: var(--cream); }
+.faq-q[aria-expanded="true"] { background: var(--cream); border-bottom: 1px solid var(--border); }
+.faq-icon { font-size: 1.25rem; color: var(--blue); transition: transform 0.2s; flex-shrink: 0; line-height: 1; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-a { display: none; padding: 1rem 1.5rem 1.5rem; font-size: var(--ts-base); line-height: 1.8; color: var(--mid); background: var(--cream); }
+.faq-a.open { display: block; }
+
+/* ── FORM ── */
+.form-section { background: var(--black); padding: var(--py) var(--px); }
+.form-inner { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem,5vw,4rem); align-items: start; }
+.form-copy h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.7rem,3vw,2.4rem); font-weight: 500; letter-spacing: 0.02em; color: var(--od); line-height: 1.2; margin-bottom: 0.9rem; }
+.form-copy p { font-size: var(--ts-base); line-height: 1.8; color: var(--od-70); margin-bottom: 1.75rem; }
+.perks { list-style: none; }
+.perks li { font-size: var(--ts-sm); color: var(--od-70); padding: 0.45rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 0.65rem; }
+.perks li:last-child { border-bottom: none; }
+.perks li::before { content: '✓'; color: var(--blue-lt); flex-shrink: 0; font-weight: 500; }
+.form-box { background: var(--white); padding: 2rem; }
+.form-group { margin-bottom: 1.25rem; }
+.form-label { display: block; font-size: var(--ts-xs); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.45rem; }
+.form-box input, .form-box select { width: 100%; height: var(--tap); border: 1px solid var(--border); background: var(--cream); padding: 0 1rem; font-family: 'Figtree', sans-serif; font-size: var(--ts-base); color: var(--black); outline: none; transition: border-color 0.15s; }
+.form-box input:focus, .form-box select:focus { border-color: var(--blue); }
+.form-box textarea { width: 100%; border: 1px solid var(--border); background: var(--cream); padding: 0.75rem 1rem; font-family: 'Figtree', sans-serif; font-size: var(--ts-base); color: var(--black); outline: none; transition: border-color 0.15s; resize: vertical; min-height: 80px; }
+.btn-submit { width: 100%; height: var(--tap); background: var(--blue); color: var(--od); font-family: 'Figtree', sans-serif; font-size: var(--ts-sm); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.15s; }
+.btn-submit:hover { background: var(--blue-dk); }
+.form-note { font-size: var(--ts-xs); color: var(--muted); text-align: center; margin-top: 0.75rem; }
+
+/* ── FOOTER ── */
+.footer { background: var(--off); padding: 2rem var(--px); border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: var(--mw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-brand { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-sm); color: rgba(255,255,255,0.35); }
+.footer-links { display: flex; gap: 1.5rem; list-style: none; }
+.footer-links a { font-size: var(--ts-xs); color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: rgba(255,255,255,0.6); }
+
+/* ── MOBILE NAV ── */
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; -webkit-tap-highlight-color: transparent; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--od); border-radius: 2px; transition: all 0.2s; }
+.nav-mobile { display: none; position: fixed; inset: 64px 0 0 0; background: rgba(15,15,14,0.98); backdrop-filter: blur(8px); z-index: 99; flex-direction: column; padding: 2rem var(--px); gap: 0; overflow-y: auto; }
+.nav-mobile.open { display: flex; }
+.nav-mobile a { font-size: 1.1rem; font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.15s; }
+.nav-mobile a:hover { color: var(--od); }
+.nav-mobile .nav-mobile-cta { background: var(--blue); color: var(--od) !important; text-align: center; margin-top: 1.5rem; border: none !important; padding: 1rem; font-family: 'Figtree', sans-serif; font-size: var(--ts-sm); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: none !important; }
+
+/* ── ACCORDION ── */
+.accordion { border: 1px solid var(--border); margin-bottom: 0.5rem; }
+.accordion-trigger { width: 100%; text-align: left; background: var(--white); border: none; padding: 1.1rem 1.25rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: var(--tap); transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+.accordion-trigger:hover, .accordion-trigger[aria-expanded="true"] { background: var(--cream); }
+.accordion-trigger-left { display: flex; align-items: center; gap: 0.75rem; }
+.accordion-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: var(--blue-bg); padding: 0.2rem 0.45rem; flex-shrink: 0; }
+.accordion-label { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-base); font-weight: 500; color: var(--black); }
+.accordion-icon { font-size: 1.3rem; color: var(--blue); transition: transform 0.2s; flex-shrink: 0; line-height: 1; }
+.accordion-trigger[aria-expanded="true"] .accordion-icon { transform: rotate(45deg); }
+.accordion-body { display: none; padding: 1.25rem; border-top: 1px solid var(--border); background: var(--cream); }
+.accordion-body.open { display: block; }
+.accordion-body p { font-size: var(--ts-sm); line-height: 1.75; color: var(--dark); margin-bottom: 0.75rem; }
+.accordion-body p:last-child { margin-bottom: 0; }
+.accordion-mechanism { background: var(--white); border: 1px solid var(--border); padding: 0.85rem 1rem; margin-top: 0.75rem; }
+.accordion-mechanism-label { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.3rem; }
+.accordion-mechanism-text { font-size: var(--ts-xs); color: var(--mid); line-height: 1.55; }
+.accordion-science { font-family: 'JetBrains Mono', monospace; font-size: 0.56rem; color: var(--muted); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); letter-spacing: 0.04em; }
+.accordion-region { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+.accordion-title { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-base); font-weight: 500; color: var(--black); margin-bottom: 0.5rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .nav-hamburger { display: flex; }
+  .nav-links { display: none; }
+  .nav-cta-desktop { display: none; }
+}
+@media (max-width: 900px) {
+  .hero { min-height: auto; padding-top: 3rem; padding-bottom: 3rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-right { display: none; }
+  .hero-sub { max-width: 100%; }
+  .hero-cta { width: 100%; }
+  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  .hero-link { align-self: center; text-align: center; }
+  .science-layout { grid-template-columns: 1fr; }
+  .science-explainer { display: none; }
+  .science-detail { display: none; }
+  .science-accordions { display: block !important; }
+  .have-grid { grid-template-columns: 1fr 1fr; }
+  .bridge-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .disruption-grid { grid-template-columns: 1fr; }
+  .changes-grid { grid-template-columns: 1fr 1fr; }
+  .form-inner { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); gap: 1rem; }
+  .bridge-points { display: none; }
+  .bridge-accordions { display: block !important; }
+  .method-intro-block { padding: 1.5rem; }
+  .shifts-layout { display: none; }
+  .shifts-accordions { display: block !important; }
+}
+@media (max-width: 600px) {
+  .have-grid { grid-template-columns: 1fr; }
+  .changes-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .research-table { font-size: 0.72rem; }
+  .research-table th, .research-table td { padding: 0.5rem 0.65rem; }
+}
+/* Hide accordion versions on desktop */
+@media (min-width: 901px) {
+  .bridge-accordions { display: none !important; }
+  .science-accordions { display: none !important; }
+  .shifts-accordions { display: none !important; }
+}
+/* ── DESKTOP TOGGLE ── */
+.desktop-toggle { width: 100%; text-align: left; background: var(--white); border: 1px solid var(--border); padding: 1rem 1.25rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: var(--tap); transition: background 0.15s; font-family: 'Figtree', sans-serif; -webkit-tap-highlight-color: transparent; }
+.desktop-toggle:hover, .desktop-toggle[aria-expanded="true"] { background: var(--cream); }
+.desktop-toggle-label { font-size: var(--ts-base); font-weight: 600; color: var(--black); }
+.desktop-toggle-icon { font-size: 1.3rem; color: var(--blue); transition: transform 0.2s; flex-shrink: 0; line-height: 1; }
+.desktop-toggle[aria-expanded="true"] .desktop-toggle-icon { transform: rotate(45deg); }
+.desktop-toggle-body { display: none; }
+.desktop-toggle-body.open { display: block; }
+.alt-bg .desktop-toggle { background: var(--white); }
+.alt-bg .desktop-toggle:hover, .alt-bg .desktop-toggle[aria-expanded="true"] { background: var(--sand); }
+
+/* ── BRIDGE NEW LAYOUT ── */
+.bridge-inner-new { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 3rem; align-items: start; }
+.bridge-left-new { display: flex; flex-direction: column; gap: 1.5rem; }
+
+/* Bridge application accordions */
+.bridge-acc-list { display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); }
+.bridge-acc-item { background: rgba(255,255,255,0.04); }
+.bridge-acc-trigger { width: 100%; background: none; border: none; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 0.85rem; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: background 0.15s; min-height: var(--tap); }
+.bridge-acc-trigger:hover, .bridge-acc-trigger[aria-expanded="true"] { background: rgba(255,255,255,0.06); }
+.bridge-acc-n { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--blue-lt); flex-shrink: 0; }
+.bridge-acc-label { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-base); font-weight: 500; color: var(--od); flex: 1; text-align: left; }
+.bridge-acc-icon { font-size: 1.2rem; color: var(--blue-lt); transition: transform 0.2s; flex-shrink: 0; line-height: 1; }
+.bridge-acc-trigger[aria-expanded="true"] .bridge-acc-icon { transform: rotate(45deg); }
+.bridge-acc-body { display: none; padding: 0 1.25rem 1.1rem 3rem; font-size: var(--ts-sm); line-height: 1.7; color: rgba(255,255,255,0.6); }
+.bridge-acc-body.open { display: block; }
+
+/* Course card */
+.bridge-course-card { background: var(--white); border-top: 3px solid var(--blue); position: sticky; top: 80px; }
+.bridge-course-card-top { background: var(--cream); padding: 1.5rem; border-bottom: 1px solid var(--border); }
+.bridge-course-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; }
+.bridge-course-name { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-xl); font-weight: 500; color: var(--black); margin-bottom: 0.5rem; }
+.bridge-course-price-row { display: flex; align-items: baseline; gap: 0.35rem; }
+.bridge-course-price-n { font-family: 'Nunito Sans', sans-serif; font-size: var(--ts-2xl); font-weight: 500; color: var(--black); }
+.bridge-course-price-note { font-size: var(--ts-xs); color: var(--muted); }
+.bridge-course-card .bridge-list { padding: 1.25rem 1.25rem 0; }
+.bridge-course-card .bridge-list li { color: var(--dark); border-bottom-color: var(--border); }
+.bridge-course-card .bridge-list li::before { color: var(--blue); }
+.bridge-course-card .btn-bridge { margin: 1.25rem; display: flex; }
+.bridge-course-card .bridge-cta-note { padding: 0 1.25rem 1rem; }
+.bridge-advisory { margin: 0 1.25rem 1.25rem; background: var(--blue-bg); border: 1px solid var(--blue); padding: 1rem; }
+.bridge-advisory-label { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-dk); margin-bottom: 0.4rem; }
+.bridge-advisory-text { font-size: var(--ts-xs); color: var(--blue-dk); line-height: 1.6; margin-bottom: 0.6rem; }
+.bridge-advisory-link { font-size: var(--ts-xs); font-weight: 600; color: var(--blue); text-decoration: none; }
+.bridge-advisory-link:hover { color: var(--blue-dk); }
+
+/* btn-bridge on new card */
+.bridge-course-card .btn-bridge { background: var(--black); color: var(--od); }
+.bridge-course-card .btn-bridge:hover { background: var(--blue-dk); }
+
+@media (max-width: 900px) {
+  .bridge-inner-new { grid-template-columns: 1fr; gap: 2rem; }
+  .bridge-course-card { position: static; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<header>
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="The Resilient Brain, Home">
+        <span class="nav-logo-name">The Resilient Brain</span>
+        <span class="nav-logo-sub">The HAVE Framework · Werner Müller</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#science">The Science</a></li>
+        <li><a href="#method">The Method</a></li>
+        <li><a href="#venture">The Course</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="https://calendly.com/wernermuller/wm-meeting" target="_blank" rel="noopener" class="nav-cta nav-cta-desktop">Book a free call</a>
+      <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav(this)">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="#science" onclick="closeMobileNav()">The Science</a>
+    <a href="#method" onclick="closeMobileNav()">The Method</a>
+    <a href="#venture" onclick="closeMobileNav()">The Course</a>
+    <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+    <a href="#join" onclick="closeMobileNav()">Get early access</a>
+    <a href="https://calendly.com/wernermuller/wm-meeting" target="_blank" rel="noopener" class="nav-mobile-cta" onclick="closeMobileNav()">Book a free call →</a>
+  </div>
+
+<!-- ── HERO ── -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="hero-kicker">Neuroscience · Effectuation · Werner Müller</p>
+      <h1 class="hero-title" id="hero-h">Your brain can be<br>trained to handle<br><em>anything.</em></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">The world isn't going to stop changing. AI, economic shifts, whole industries being restructured. The conditions you built your career around are moving. The question is whether your brain knows how to handle that. The research says it can be trained to. This is how.</p>
+      <div class="hero-cta">
+        <a href="#science" class="btn-primary">See the science →</a>
+        <a href="https://calendly.com/wernermuller/wm-meeting" target="_blank" rel="noopener" class="btn-ghost">Book a free intro call</a>
+        <a href="#venture" class="hero-link">Also works as a solo business →</a>
+      </div>
+    </div>
+    <div class="hero-right" aria-hidden="true">
+      <div class="brain-stat">
+        <div class="brain-stat-label">Amygdala recalibration</div>
+        <div class="brain-stat-title">Uncertainty stops feeling like danger</div>
+        <div class="brain-stat-desc">Repeated affordable loss practice desensitises your threat response. Measurable. Not a mindset shift.</div>
+        <div class="brain-stat-bar"><div class="brain-stat-fill" style="width:82%"></div></div>
+      </div>
+      <div class="brain-stat">
+        <div class="brain-stat-label">Prefrontal cortex strengthening</div>
+        <div class="brain-stat-title">Pivoting becomes a skill, not a crisis</div>
+        <div class="brain-stat-desc">Flexible thinking circuits built through consistent effectual practice. Cognitive flexibility is trainable.</div>
+        <div class="brain-stat-bar"><div class="brain-stat-fill" style="width:74%"></div></div>
+      </div>
+      <div class="brain-stat">
+        <div class="brain-stat-label">Default mode network shift</div>
+        <div class="brain-stat-title">Your idle brain runs possibilities, not threats</div>
+        <div class="brain-stat-desc">From anxious simulation to generative thinking. The shift happens gradually, then completely.</div>
+        <div class="brain-stat-bar"><div class="brain-stat-fill" style="width:68%"></div></div>
+      </div>
+      <div class="brain-stat">
+        <div class="brain-stat-label">Expert pattern recognition</div>
+        <div class="brain-stat-title">Reading situations fast, moving well</div>
+        <div class="brain-stat-desc">Myelination of decision pathways through structured practice. What experts call intuition is actually built.</div>
+        <div class="brain-stat-bar"><div class="brain-stat-fill" style="width:91%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar" role="complementary">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-n">6</div><div class="stat-l">Brain shifts identified</div></div>
+    <div class="stat"><div class="stat-n">40M+</div><div class="stat-l">People navigating this now</div></div>
+    <div class="stat"><div class="stat-n">20+</div><div class="stat-l">Years research base</div></div>
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">Core principles</div></div>
+  </div>
+</div>
+
+<!-- ── THE DISRUPTION REALITY ── -->
+<section class="section" id="disruption" aria-labelledby="dis-h">
+  <div class="section-inner">
+    <div class="eyebrow">The reality</div>
+    <h2 class="section-title" id="dis-h">Disruption isn't coming. It's here.</h2>
+    <p class="section-lead">And the standard response, work harder, upskill faster, stay positive, is not a match for what's actually happening. What's needed is a brain that processes disruption differently. That's not a metaphor. It's a neurological proposition.</p>
+
+    <div class="disruption-grid">
+      <div class="dis-card">
+        <div class="dis-card-n">The AI shift</div>
+        <div class="dis-card-stat">44%</div>
+        <div class="dis-card-title">Of professional tasks affected by AI within 5 years</div>
+        <div class="dis-card-body">Not replaced, restructured. But the skills and roles people spent decades building are changing faster than most organisations can explain, let alone manage.</div>
+      </div>
+      <div class="dis-card">
+        <div class="dis-card-n">The employment reality</div>
+        <div class="dis-card-stat">40M+</div>
+        <div class="dis-card-title">People building independently worldwide</div>
+        <div class="dis-card-body">Not because they chose the solopreneur life. Because the conditions of traditional employment stopped feeling secure. Independence isn't a lifestyle choice for most of them. It's a rational response to risk.</div>
+      </div>
+      <div class="dis-card">
+        <div class="dis-card-n">The transition problem</div>
+        <div class="dis-card-stat">3–5×</div>
+        <div class="dis-card-title">More career transitions in a lifetime than previous generations</div>
+        <div class="dis-card-body">Most careers now involve several major pivots. The people who handle them well aren't luckier or tougher. They've built a different relationship with uncertainty, and that shows up in how their brains actually work.</div>
+      </div>
+    </div>
+
+    <button class="desktop-toggle" aria-expanded="false" onclick="toggleDesktop(this)" style="margin-top:1.5rem;">
+      <span class="desktop-toggle-label">What actually changes</span>
+      <span class="desktop-toggle-icon">+</span>
+    </button>
+    <div class="desktop-toggle-body">
+    <div class="changes-grid">
+      <div class="change-card">
+        <div class="change-card-before">Uncertainty triggers a threat response. The amygdala fires. Thinking narrows.</div>
+        <div class="change-card-after">Uncertainty triggers curiosity. The brain looks for what's useful in it.</div>
+      </div>
+      <div class="change-card">
+        <div class="change-card-before">Disruption feels like something happening to you. Reactive. Destabilising.</div>
+        <div class="change-card-after">Disruption becomes readable. You see the signal before others do.</div>
+      </div>
+      <div class="change-card">
+        <div class="change-card-before">Failure carries a verdict. It says something about your capabilities.</div>
+        <div class="change-card-after">Failure is data. It tells you something about the environment and timing.</div>
+      </div>
+      <div class="change-card">
+        <div class="change-card-before">Transitions feel like starting over. Identity is tied to what you currently do.</div>
+        <div class="change-card-after">Transitions feel like deploying what you've built. Identity is in the expertise, not the role.</div>
+      </div>
+      <div class="change-card">
+        <div class="change-card-before">The idle brain runs worst-case scenarios. What if this fails. What if I can't recover.</div>
+        <div class="change-card-after">The idle brain runs generative questions. Who could help. What could this become.</div>
+      </div>
+      <div class="change-card">
+        <div class="change-card-before">Stress closes thinking down. Cortisol. Tunnel vision. Fight or flight.</div>
+        <div class="change-card-after">Stress focuses thinking. Challenge response. Wider field. Faster pattern recognition.</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE BRAIN SCIENCE ── -->
+<section class="section alt-bg" id="science" aria-labelledby="sci-h">
+  <div class="section-inner">
+    <div class="eyebrow">The neuroscience</div>
+    <h2 class="section-title" id="sci-h">Six things that actually change. Not metaphors.</h2>
+    <p class="section-lead">Practicing effectual thinking is how expert entrepreneurs have always made decisions under uncertainty. And it turns out this way of thinking produces real changes in how the brain is wired. Here is what actually happens, and why.</p>
+
+    <div class="science-layout">
+      <div class="science-explainer" role="tablist">
+        <div class="sci-row active" role="tab" tabindex="0" onclick="showSci(this, 'sci-1')">
+          <div class="sci-letter">1</div>
+          <div>
+            <div class="sci-text-head">Amygdala recalibration</div>
+            <div class="sci-text-body">Uncertainty stops registering as danger</div>
+          </div>
+        </div>
+        <div class="sci-row" role="tab" tabindex="0" onclick="showSci(this, 'sci-2')">
+          <div class="sci-letter">2</div>
+          <div>
+            <div class="sci-text-head">Prefrontal cortex strengthening</div>
+            <div class="sci-text-body">Flexible thinking becomes the default</div>
+          </div>
+        </div>
+        <div class="sci-row" role="tab" tabindex="0" onclick="showSci(this, 'sci-3')">
+          <div class="sci-letter">3</div>
+          <div>
+            <div class="sci-text-head">Reward system recalibration</div>
+            <div class="sci-text-body">Resilience to plan changes increases</div>
+          </div>
+        </div>
+        <div class="sci-row" role="tab" tabindex="0" onclick="showSci(this, 'sci-4')">
+          <div class="sci-letter">4</div>
+          <div>
+            <div class="sci-text-head">Expert intuition circuits</div>
+            <div class="sci-text-body">Pattern recognition in ambiguous situations accelerates</div>
+          </div>
+        </div>
+        <div class="sci-row" role="tab" tabindex="0" onclick="showSci(this, 'sci-5')">
+          <div class="sci-letter">5</div>
+          <div>
+            <div class="sci-text-head">Default mode network shift</div>
+            <div class="sci-text-body">The idle brain switches from threat to possibility</div>
+          </div>
+        </div>
+        <div class="sci-row" role="tab" tabindex="0" onclick="showSci(this, 'sci-6')">
+          <div class="sci-letter">6</div>
+          <div>
+            <div class="sci-text-head">Stress response shift</div>
+            <div class="sci-text-body">Threat response gives way to challenge response</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="science-detail" id="sci-detail" aria-live="polite">
+        <div id="sci-1">
+          <div class="sci-detail-label">Brain region: Amygdala</div>
+          <div class="sci-detail-title">Uncertainty stops feeling like danger</div>
+          <div class="sci-detail-body">Your amygdala is your brain's alarm system. It fires when things feel uncertain because uncertainty used to be dangerous. That response is not a character flaw or a confidence problem. It's a survival mechanism that's been running for a very long time, and you can't think your way out of it with better framing or positive self-talk.</div>
+          <div class="sci-detail-body">What you can do is change the conditions under which it fires. Making small bets where the downside is survivable works like a training programme for your amygdala. Each one is a data point that tells your brain: this was manageable. Over time, uncertainty stops setting off the alarm. Not because you got braver. Because your brain learned from what you did.</div>
+          <div class="sci-detail-mechanism">
+            <div class="sci-detail-mechanism-label">Mechanism</div>
+            <div class="sci-detail-mechanism-text">Repeated exposure to manageable risk → reduced amygdala hyperactivation → lower cortisol baseline under uncertainty → broader cognitive field available for decision-making</div>
+          </div>
+        </div>
+        <div id="sci-2" style="display:none">
+          <div class="sci-detail-label">Brain region: Prefrontal cortex</div>
+          <div class="sci-detail-title">Flexible thinking becomes the default</div>
+          <div class="sci-detail-body">The prefrontal cortex is where flexible thinking happens: holding multiple options at once, reframing a situation, staying open when things get complicated. When you're in a threat state, the amygdala cuts in on that process. Thinking narrows. Options collapse. The pull toward whatever feels familiar becomes very strong.</div>
+          <div class="sci-detail-body">Every time you ask "what can I do with what I have?" instead of spiralling about what you've lost or don't have, you're working those circuits. Do it enough and pivoting stops feeling like a crisis. It starts to feel like what the work actually is.</div>
+          <div class="sci-detail-mechanism">
+            <div class="sci-detail-mechanism-label">Mechanism</div>
+            <div class="sci-detail-mechanism-text">Repeated means-based reframing → vmPFC and ACC activation → increased cognitive flexibility → reduced catastrophic thinking under pressure</div>
+          </div>
+        </div>
+        <div id="sci-3" style="display:none">
+          <div class="sci-detail-label">Brain region: Dopaminergic reward system</div>
+          <div class="sci-detail-title">Resilience to plan changes increases</div>
+          <div class="sci-detail-body">When your sense of progress depends on hitting a specific target, losing that target means losing the reward. A job disappears. A plan falls apart. A market shifts. The dopamine goes with it, and so does the feeling of going anywhere.</div>
+          <div class="sci-detail-body">This kind of practice shifts what gets rewarded. The dopamine starts attaching to the process itself: the collaboration, what's developing, what could come next. When plans change, and they always do, you're not stranded. You're already curious about what comes next. That's not a personality type. It's a trainable shift.</div>
+          <div class="sci-detail-mechanism">
+            <div class="sci-detail-mechanism-label">Mechanism</div>
+            <div class="sci-detail-mechanism-text">Repeated co-creation and emergence experiences → dopaminergic reward reoriented toward process → reduced plan-dependency → increased resilience to disruption</div>
+          </div>
+        </div>
+        <div id="sci-4" style="display:none">
+          <div class="sci-detail-label">Brain structures: Basal ganglia, myelination</div>
+          <div class="sci-detail-title">Pattern recognition in ambiguous situations accelerates</div>
+          <div class="sci-detail-body">What people call intuition is really fast pattern matching. Your brain recognises a situation from something it's seen before and responds quickly. That recognition is stored in procedural memory and handled by the basal ganglia. Repeated practice physically speeds up the pathways involved, through a process called myelination.</div>
+          <div class="sci-detail-body">Effectual practice builds these pathways faster by putting you in uncertain situations with a consistent framework for reading them. Each one adds to the pattern library. Over time, what used to require careful deliberate thought becomes fast and automatic. The ease you see in experienced people under pressure isn't calm. It's speed. Speed that was built through practice.</div>
+          <div class="sci-detail-mechanism">
+            <div class="sci-detail-mechanism-label">Mechanism</div>
+            <div class="sci-detail-mechanism-text">Repeated structured exposure to ambiguity → myelination of decision pathways → faster pattern retrieval → expert intuition (System 1 processing in uncertain environments)</div>
+          </div>
+        </div>
+        <div id="sci-5" style="display:none">
+          <div class="sci-detail-label">Brain network: Default mode network</div>
+          <div class="sci-detail-title">The idle brain switches from threat to possibility</div>
+          <div class="sci-detail-body">The default mode network is what runs when your brain isn't focused on anything in particular: during rest, while your mind wanders, when you're thinking about other people. For most people under pressure, it runs anxious future simulations. What if this doesn't work. What if I can't come back from this. What if I got it wrong. These feel useful but they're not. They're your brain assessing threats it has no control over.</div>
+          <div class="sci-detail-body">Consistent practice trains a different idle mode. Instead of worst-case simulations, the brain starts asking: who could help with this, what could this become, what's a move I can actually make right now. This isn't optimism. It's a habit that builds slowly and then becomes the way your mind works when it's not doing anything else.</div>
+          <div class="sci-detail-mechanism">
+            <div class="sci-detail-mechanism-label">Mechanism</div>
+            <div class="sci-detail-mechanism-text">Repeated generative decision-making → DMN reorientation toward possibility simulation → reduced baseline anxiety → changed quality of spontaneous thought</div>
+          </div>
+        </div>
+        <div id="sci-6" style="display:none">
+          <div class="sci-detail-label">Neurochemistry: Cortisol / DHEA ratio</div>
+          <div class="sci-detail-title">Threat response gives way to challenge response</div>
+          <div class="sci-detail-body">There are two different stress responses, and they feel different from the inside. Threat: cortisol spike, narrowed attention, tunnel vision, the urge to run or freeze. Challenge: focused energy, wider thinking, real engagement with the problem. The neurochemistry is fairly similar. What your brain can do with it is not.</div>
+          <div class="sci-detail-body">Which one fires depends largely on whether you perceive a situation as navigable or not. Consistent practice changes that perception. Situations that used to trigger threat start triggering challenge instead. Gradually, that becomes how you characteristically respond to disruption.</div>
+          <div class="sci-detail-mechanism">
+            <div class="sci-detail-mechanism-label">Mechanism</div>
+            <div class="sci-detail-mechanism-text">Repeated structured navigation of uncertainty → updated situational appraisal → improved cortisol/DHEA ratio → challenge response replaces threat response as default</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile accordion version of science -->
+    <div class="science-accordions" style="display:none; margin-top:1rem;">
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">1</span><span class="accordion-label">Amygdala recalibration</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><div class="accordion-region">Brain region: Amygdala</div><div class="accordion-title">Uncertainty stops feeling like danger</div><p>Your amygdala is your brain's alarm system. It fires when things feel uncertain because uncertainty used to be dangerous. That response is not a character flaw or a confidence problem. It's a survival mechanism that's been running for a very long time, and you can't think your way out of it with better framing or positive self-talk.</p><p>What you can do is change the conditions under which it fires. The affordable loss principle works as a systematic desensitisation programme. Each manageable risk is a data point that updates the amygdala's threat assessment. Over time, uncertainty stops triggering the alarm. Not through optimism. Through accumulated experience of surviving.</p><div class="accordion-mechanism"><div class="accordion-mechanism-label">Mechanism</div><div class="accordion-mechanism-text">Repeated exposure to manageable risk → reduced amygdala hyperactivation → lower cortisol baseline → broader cognitive field available for decision-making</div></div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">2</span><span class="accordion-label">Prefrontal cortex strengthening</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><div class="accordion-region">Brain region: Prefrontal cortex</div><div class="accordion-title">Flexible thinking becomes the default</div><p>The prefrontal cortex is where flexible thinking happens: holding multiple options at once, reframing a situation, staying open when things get complicated. When you're in a threat state, the amygdala cuts in on that process. Thinking narrows. Options collapse. The pull toward whatever feels familiar becomes very strong.</p><p>Every time you ask "what can I do with what I have?" instead of catastrophising about what you lack, you are activating and strengthening prefrontal circuits. Done consistently, pivoting stops feeling like a crisis.</p><div class="accordion-mechanism"><div class="accordion-mechanism-label">Mechanism</div><div class="accordion-mechanism-text">Repeated means-based reframing → vmPFC and ACC activation → increased cognitive flexibility → reduced catastrophic thinking under pressure</div></div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">3</span><span class="accordion-label">Reward system recalibration</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><div class="accordion-region">Brain region: Dopaminergic reward system</div><div class="accordion-title">Resilience to plan changes increases</div><p>People whose sense of progress is tied to hitting predetermined targets lose their dopamine reward when those targets shift or disappear. Effectual practice shifts the reward toward the process itself, the co-creation, what's emerging, what's becoming possible.</p><p>When plans change, and they always do, you're not left without a sense of progress. You're already finding the new situation interesting. This is not a personality difference. It is a trainable neurological shift.</p><div class="accordion-mechanism"><div class="accordion-mechanism-label">Mechanism</div><div class="accordion-mechanism-text">Repeated co-creation experiences → dopaminergic reward reoriented toward process → reduced plan-dependency → increased resilience to disruption</div></div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">4</span><span class="accordion-label">Expert intuition circuits</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><div class="accordion-region">Brain structures: Basal ganglia, myelination</div><div class="accordion-title">Pattern recognition in ambiguous situations accelerates</div><p>What people call intuition is fast pattern matching built from experience and stored in procedural memory. Repeated practice physically speeds up the neural pathways involved through myelination.</p><p>Effectual practice accelerates this by repeatedly putting you in ambiguous situations with a framework for reading them. Each situation builds a new data point. Over time, what once required conscious analysis becomes automatic.</p><div class="accordion-mechanism"><div class="accordion-mechanism-label">Mechanism</div><div class="accordion-mechanism-text">Repeated structured exposure to ambiguity → myelination of decision pathways → faster pattern retrieval → expert intuition in uncertain environments</div></div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">5</span><span class="accordion-label">Default mode network shift</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><div class="accordion-region">Brain network: Default mode network</div><div class="accordion-title">The idle brain switches from threat to possibility</div><p>For most people under stress, the default mode network runs anxious future simulations: what if this fails, what if I can't recover. These feel productive but they're not, they're the brain running threat assessments on scenarios it cannot control.</p><p>Effectual practice trains a different idle mode. Instead of worst-case scenario generation, the brain starts running generative simulations: who could help, what could this become, what's the next move I can actually make.</p><div class="accordion-mechanism"><div class="accordion-mechanism-label">Mechanism</div><div class="accordion-mechanism-text">Repeated generative decision-making → DMN reorientation toward possibility simulation → reduced baseline anxiety → changed quality of spontaneous thought</div></div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">6</span><span class="accordion-label">Stress response shift</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><div class="accordion-region">Neurochemistry: Cortisol / DHEA ratio</div><div class="accordion-title">Threat response gives way to challenge response</div><p>Two physiologically distinct stress responses. Threat: cortisol spike, narrowed attention, tunnel vision. Challenge: focused arousal, expanded thinking, heightened engagement. The neurochemistry is similar. The cognitive outcome is completely different.</p><p>Effectual practice, by repeatedly putting you in uncertain situations with a framework for navigating them, gradually shifts which response fires first.</p><div class="accordion-mechanism"><div class="accordion-mechanism-label">Mechanism</div><div class="accordion-mechanism-text">Repeated structured navigation of uncertainty → updated situational appraisal → improved cortisol/DHEA ratio → challenge response replaces threat response as default</div></div></div></div>
+    </div>
+      <button class="research-toggle" aria-expanded="false" aria-controls="research-1-content" onclick="toggleResearch(this)">
+        <span class="research-toggle-left">
+          <span class="research-badge">Research</span>
+          <span class="research-title">The science behind the framework, Effectuation theory</span>
+        </span>
+        <span class="research-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="research-content" id="research-1-content">
+        <p class="research-body">The framework is built on Effectuation, a body of research by Professor Saras Sarasvathy at the University of Virginia's Darden School. She studied 27 expert entrepreneurs and found that they don't start with a goal and work backwards. They start from what they already have and let things develop through action and conversation. The research has since been adopted at Stanford, MIT, IMD, and INSEAD.</p>
+        <div class="research-quote">
+          "To the extent that we can control the future, we do not need to predict it."
+          <cite>: Saras Sarasvathy, University of Virginia</cite>
+        </div>
+        <p class="research-body">What makes this neurologically interesting is Sarasvathy's finding that novices default to causal logic while experts shift to effectual logic. This is experience-dependent neuroplasticity in action. The expert's brain has been rewired through years of working in uncertain conditions, not through resilience training or optimism exercises, but through structured practice with real stakes and real feedback.</p>
+        <table class="research-table">
+          <thead>
+            <tr><th>Effectuation principle</th><th>Brain effect</th><th>Mechanism</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Bird in hand (start with what you have)</td><td>Reduces resource-scarcity anxiety</td><td>Reframes situational appraisal; reduces threat activation</td></tr>
+            <tr><td>Affordable loss (survivable bets)</td><td>Desensitises amygdala to uncertainty</td><td>Systematic desensitisation through repeated manageable exposure</td></tr>
+            <tr><td>Crazy quilt (build with stakeholders)</td><td>Activates social reward circuits</td><td>Oxytocin release through trust-building; mirror neuron engagement</td></tr>
+            <tr><td>Lemonade (exploit the unexpected)</td><td>Trains novelty-seeking response to disruption</td><td>Dopamine reorientation toward emergence; reduces plan-dependency</td></tr>
+          </tbody>
+        </table>
+        <p class="research-source">Sources: Sarasvathy, S.D. (2001). Causation and Effectuation. Academy of Management Review, 26(2). Damasio, A. (1994). Descartes' Error, Somatic Marker Hypothesis. Kahneman, D. (2011). Thinking, Fast and Slow. Research on amygdala downregulation, vmPFC/ACC flexibility, and experience-dependent neuroplasticity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE METHOD ── -->
+<section class="section" id="method" aria-labelledby="method-h">
+  <div class="section-inner">
+    <div class="eyebrow">The HAVE framework</div>
+    <h2 class="section-title" id="method-h">Four principles. Each one trains a different part of your brain.</h2>
+    <p class="section-lead">The HAVE framework is the practical structure through which effectual thinking gets practiced. Each principle maps directly to a neurological shift. Together they constitute a training programme for navigating an uncertain world.</p>
+
+    <div class="method-intro-block">
+      <p>Most frameworks give you a list of things to do. This one changes how your brain actually processes the situations you find yourself in. The goal isn't a better plan. It's a brain that reads disruption clearly, stays functional under uncertainty, and finds the next move in conditions that leave other people stuck.</p>
+    </div>
+
+    <div class="have-grid">
+      <div class="have-card">
+        <div class="have-letter">H</div>
+        <span class="have-tag">Have · Amygdala</span>
+        <div class="have-name">Start with what you already have</div>
+        <div class="have-body">Your expertise, your network, your reputation, your constraints. These are your actual starting assets. Recognising them for what they are reduces the anxiety that comes from thinking you're starting from nothing. You're not. You're starting from everything you've built.</div>
+      </div>
+      <div class="have-card">
+        <div class="have-letter">A</div>
+        <span class="have-tag">Absorb · Amygdala + vmPFC</span>
+        <div class="have-name">Make survivable bets</div>
+        <div class="have-body">Instead of calculating expected return, ask what you can afford to get wrong. Each bet where the downside is survivable is a session of amygdala training. You don't need confidence before you start. Confidence comes from having navigated things, and that only comes from starting.</div>
+      </div>
+      <div class="have-card">
+        <div class="have-letter">V</div>
+        <span class="have-tag">Value exchange · Social cognition</span>
+        <div class="have-name">Build with people, not for them</div>
+        <div class="have-body">Building with people who genuinely want to be involved activates the brain's social reward circuits in a way that cold selling simply doesn't. It produces oxytocin, engages the mirror neuron system, and puts the default mode network in a generative rather than defensive mode. It's better strategy and better for your brain.</div>
+      </div>
+      <div class="have-card">
+        <div class="have-letter">E</div>
+        <span class="have-tag">Exploit · Dopamine + DMN</span>
+        <div class="have-name">Surprises are information</div>
+        <div class="have-body">When you treat unexpected developments as information rather than problems, your brain starts to find novelty rewarding rather than alarming. Over time, disruption stops being something that happens to you and starts being something you can read and work with. That shift is most of what this is about.</div>
+      </div>
+    </div>
+
+    <button class="desktop-toggle" aria-expanded="false" onclick="toggleDesktop(this)" style="margin-top:2rem;">
+      <span class="desktop-toggle-label">The six brain shifts in detail</span>
+      <span class="desktop-toggle-icon">+</span>
+    </button>
+    <div class="desktop-toggle-body">
+    <div class="shifts-layout" style="margin-top:0;">
+      <div class="shift-card">
+        <div class="shift-n">Brain shift 01</div>
+        <div class="shift-title">From threat to challenge</div>
+        <div class="shift-body">The same situation that once triggered cortisol and tunnel vision begins to trigger focused arousal and expanded thinking. Not because you changed your attitude. Because your brain updated its prior probability that you can navigate this.</div>
+        <div class="shift-science">Cortisol / DHEA ratio · Situational appraisal theory</div>
+      </div>
+      <div class="shift-card">
+        <div class="shift-n">Brain shift 02</div>
+        <div class="shift-title">From fixed to generative</div>
+        <div class="shift-body">The goal stops being the thing that drives you. The process, the emergence, the co-creation, what's becoming possible, becomes inherently rewarding. This makes you structurally more resilient to the inevitable plan changes that disruption produces.</div>
+        <div class="shift-science">Dopaminergic reward system · Process vs. outcome orientation</div>
+      </div>
+      <div class="shift-card">
+        <div class="shift-n">Brain shift 03</div>
+        <div class="shift-title">From reactive to readable</div>
+        <div class="shift-body">Disruption stops being something that happens to you and starts being something you can read. Expert pattern recognition in ambiguous environments is not a personality trait. It is myelinated neural pathways built through structured practice.</div>
+        <div class="shift-science">Basal ganglia · Procedural memory · Myelination</div>
+      </div>
+      <div class="shift-card">
+        <div class="shift-n">Brain shift 04</div>
+        <div class="shift-title">From anxious to curious</div>
+        <div class="shift-body">The idle brain stops running threat simulations and starts running generative ones. This is not optimism. It is the default mode network, trained over time to ask different questions when there is nothing immediate to process.</div>
+        <div class="shift-science">Default mode network · Spontaneous thought generation</div>
+      </div>
+      <div class="shift-card">
+        <div class="shift-n">Brain shift 05</div>
+        <div class="shift-title">From scarcity to assets</div>
+        <div class="shift-body">The experience, relationships, and judgment you have built over a career stop being background and become the starting point. Recognising your own expertise as a real asset changes your threat appraisal at a structural level.</div>
+        <div class="shift-science">vmPFC · Situational appraisal · Resource perception</div>
+      </div>
+      <div class="shift-card">
+        <div class="shift-n">Brain shift 06</div>
+        <div class="shift-title">From verdict to data</div>
+        <div class="shift-body">Failure stops carrying a meaning beyond the event itself. It stops being a verdict on your capabilities and becomes information about the environment, the timing, the people involved. That reinterpretation is neurologically distinct from reframing. It's a genuine change in how the event is encoded.</div>
+        <div class="shift-science">Hippocampal encoding · Error signal processing · PFC-amygdala interaction</div>
+      </div>
+    </div>
+    </div><!-- end desktop-toggle-body shifts -->
+
+    <!-- Mobile accordion version of brain shifts -->
+    <div class="shifts-accordions" style="display:none; margin-top:1rem;">
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">Shift 01</span><span class="accordion-label">From threat to challenge</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><p>The same situation that once triggered cortisol and tunnel vision begins to trigger focused arousal and expanded thinking. Not because you changed your attitude. Because your brain updated its prior probability that you can navigate this.</p><div class="accordion-science">Cortisol / DHEA ratio · Situational appraisal theory</div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">Shift 02</span><span class="accordion-label">From fixed to generative</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><p>The goal stops being the thing that drives you. The process, the emergence, the co-creation, what's becoming possible, becomes inherently rewarding. This makes you structurally more resilient to the inevitable plan changes that disruption produces.</p><div class="accordion-science">Dopaminergic reward system · Process vs. outcome orientation</div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">Shift 03</span><span class="accordion-label">From reactive to readable</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><p>Disruption stops being something that happens to you and starts being something you can read. Expert pattern recognition in ambiguous environments is not a personality trait. It is myelinated neural pathways built through structured practice.</p><div class="accordion-science">Basal ganglia · Procedural memory · Myelination</div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">Shift 04</span><span class="accordion-label">From anxious to curious</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><p>The idle brain stops running threat simulations and starts running generative ones. This is not optimism. It is the default mode network, trained over time to ask different questions when there is nothing immediate to process.</p><div class="accordion-science">Default mode network · Spontaneous thought generation</div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">Shift 05</span><span class="accordion-label">From scarcity to assets</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><p>The experience, relationships, and judgment you have built over a career stop being background and become the starting point. Recognising your own expertise as a real asset changes your threat appraisal at a structural level.</p><div class="accordion-science">vmPFC · Situational appraisal · Resource perception</div></div></div>
+      <div class="accordion"><button class="accordion-trigger" aria-expanded="false" onclick="toggleAcc(this)"><span class="accordion-trigger-left"><span class="accordion-badge">Shift 06</span><span class="accordion-label">From verdict to data</span></span><span class="accordion-icon">+</span></button><div class="accordion-body"><p>Failure stops carrying a meaning beyond the event itself. It stops being a verdict on your capabilities and becomes information about the environment, the timing, the people involved. That reinterpretation is neurologically distinct from reframing.</p><div class="accordion-science">Hippocampal encoding · Error signal processing · PFC-amygdala interaction</div></div></div>
+    </div>
+  </div>
+</section>
+<div class="bridge" id="venture">
+  <div class="bridge-inner-new">
+    <div class="bridge-left-new">
+      <div class="eyebrow" style="color:var(--blue-lt);">More than one application</div>
+      <h2 class="bridge-title">A brain trained for disruption also builds a solid independent business.</h2>
+      <p class="bridge-body">The same framework that trains your brain to handle constant change is the one expert entrepreneurs use to build sustainable independent businesses. It's the same cognitive process working in two directions at once.</p>
+
+      <div class="bridge-acc-list">
+        <div class="bridge-acc-item">
+          <button class="bridge-acc-trigger" aria-expanded="false" onclick="toggleBridgeAcc(this)">
+            <span class="bridge-acc-n">01</span>
+            <span class="bridge-acc-label">Start from what you already have</span>
+            <span class="bridge-acc-icon">+</span>
+          </button>
+          <div class="bridge-acc-body">Your expertise and network are both your psychological anchor against disruption and your most valuable business assets. They are the same thing. The inventory you do for your brain is the inventory you do for your business.</div>
+        </div>
+        <div class="bridge-acc-item">
+          <button class="bridge-acc-trigger" aria-expanded="false" onclick="toggleBridgeAcc(this)">
+            <span class="bridge-acc-n">02</span>
+            <span class="bridge-acc-label">Make bets you can afford to get wrong</span>
+            <span class="bridge-acc-icon">+</span>
+          </button>
+          <div class="bridge-acc-body">The principle that retrains your amygdala is also the right way to make your first business moves. Bets where the downside is survivable. Enough to learn from, not enough to take you out of the game.</div>
+        </div>
+        <div class="bridge-acc-item">
+          <button class="bridge-acc-trigger" aria-expanded="false" onclick="toggleBridgeAcc(this)">
+            <span class="bridge-acc-n">03</span>
+            <span class="bridge-acc-label">Build with people, not for a market</span>
+            <span class="bridge-acc-icon">+</span>
+          </button>
+          <div class="bridge-acc-body">Building with people who genuinely want to be part of what you're doing is neurologically sound and practically effective. Your first clients are almost certainly already in your network. You don't need an audience to find them.</div>
+        </div>
+        <div class="bridge-acc-item">
+          <button class="bridge-acc-trigger" aria-expanded="false" onclick="toggleBridgeAcc(this)">
+            <span class="bridge-acc-n">04</span>
+            <span class="bridge-acc-label">Read disruption before it reads you</span>
+            <span class="bridge-acc-icon">+</span>
+          </button>
+          <div class="bridge-acc-body">Reading unexpected developments as useful information is the same skill that lets you stay relevant through career shifts and industry changes. The people who don't feel like they're starting over aren't luckier. They learned to read the signals earlier.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bridge-course-card">
+      <div class="bridge-course-card-top">
+        <div class="bridge-course-eyebrow">The six-week course</div>
+        <div class="bridge-course-name">The HAVE Course</div>
+        <div class="bridge-course-price-row"><span class="bridge-course-price-n">$125</span><span class="bridge-course-price-note"> · all-in</span></div>
+      </div>
+      <ul class="bridge-list">
+        <li>Six live weekly sessions, 90 min each</li>
+        <li>Framework applied to your specific situation</li>
+        <li>Full recordings included</li>
+        <li>Applied exercises each session</li>
+        <li>Member community subscription</li>
+        <li>1-on-1 advisory available</li>
+      </ul>
+      <a href="https://calendly.com/wernermuller/wm-meeting" target="_blank" rel="noopener" class="btn-bridge">Book your free 30-min call →</a>
+      <p class="bridge-cta-note">Not a sales call. A conversation to make sure the timing is right before you commit.</p>
+      <div class="bridge-advisory">
+        <div class="bridge-advisory-label">Prefer to work directly?</div>
+        <div class="bridge-advisory-text">1-on-1 advisory sessions are available for those who want the framework applied to their specific situation rather than a group setting.</div>
+        <a href="https://calendly.com/wernermuller/wm-meeting" target="_blank" rel="noopener" class="bridge-advisory-link">Book an advisory call →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FAQ ── -->
+<section class="section" id="faq" aria-labelledby="faq-h">
+  <div class="section-inner">
+    <div class="eyebrow">Questions</div>
+    <h2 class="section-title" id="faq-h">Frequently asked.</h2>
+    <div class="faq-list" role="list">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Is this a neuroscience course or a business course?<span class="faq-icon">+</span></button><div class="faq-a">Neither exactly. It's a framework for thinking and making decisions when things are uncertain. It's grounded in research from both effectuation science and neuroscience. The course applies it practically, and for some people that includes building an independent business. But the framework is useful to anyone dealing with a world that keeps shifting, whatever their situation.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Do I need a science background to understand this?<span class="faq-icon">+</span></button><div class="faq-a">No. The science is here because it explains why the framework works at a biological level, and because knowing that your hesitation isn't a character flaw but an amygdala response is genuinely useful information. The course itself is entirely accessible without any background in neuroscience or psychology.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">How is this different from resilience training or mindset coaching?<span class="faq-icon">+</span></button><div class="faq-a">Resilience training and mindset coaching usually work at the level of attitude and belief. They ask you to think about your situation differently. This framework works at the level of practice. The brain changes that make you genuinely more resilient don't come from believing different things. They come from repeatedly making real decisions under uncertainty, with actual stakes and real feedback. That's a different thing.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What is effectuation and why does it matter?<span class="faq-icon">+</span></button><div class="faq-a">Effectuation is a body of research by Professor Saras Sarasvathy at the University of Virginia. She studied 27 expert entrepreneurs and found that they think quite differently from novices under uncertainty. They start from what they have rather than from a predetermined goal. They treat the unexpected as useful rather than as a problem. They build with people who are already interested rather than pitching to a pre-defined market. What matters is that this way of thinking is trainable, and training it produces real changes in how the brain handles uncertainty.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">How much does the course cost, and what's included?<span class="faq-icon">+</span></button><div class="faq-a">$125, all-in. Six live weekly sessions, 90 minutes each. Full recordings, applied exercises each session, and access to the member community. The course starts with a free 30-minute call so we can make sure the timing is right before you commit.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Who is Werner Müller?<span class="faq-icon">+</span></button><div class="faq-a">Werner Müller is a strategic advisor in the food and agrifood sector, an Adjunct MBA Lecturer, and the creator of the HAVE Framework. He built a $120-150k solo business using this framework across several career transitions, not by predicting what was coming but by being structured enough to read it when it arrived. He has been teaching and applying effectuation-based thinking for over a decade.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORM ── -->
+<div class="form-section" id="join">
+  <div class="form-inner">
+    <div class="form-copy">
+      <h2>Stay ahead of what's changing.</h2>
+      <p>Join the list for early access to the course, thinking on disruption and the neuroscience of adaptation, and occasional honest notes from someone building this the same way he teaches it.</p>
+      <ul class="perks">
+        <li>Early access to the HAVE Course</li>
+        <li>Free HAVE framework starter guide</li>
+        <li>Neuroscience and disruption insights</li>
+        <li>Community updates</li>
+        <li>No spam. Unsubscribe any time.</li>
+      </ul>
+    </div>
+    <div class="form-box">
+      <form name="early-access" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="subject" value="New lead: The Resilient Brain">
+        <div class="form-group"><label class="form-label" for="name">Your name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
+        <div class="form-group"><label class="form-label" for="email">Email address</label><input type="email" id="email" name="email" placeholder="your@email.com" required></div>
+        <div class="form-group"><label class="form-label" for="context">What's changing in your world right now?</label><select id="context" name="context"><option value="">Select one</option><option>AI is reshaping my field</option><option>Recently laid off or restructured</option><option>Thinking about going independent</option><option>Already independent, want a better framework</option><option>Just navigating a lot of change</option></select></div>
+        <button type="submit" class="btn-submit">Get early access</button>
+        <p class="form-note">thehaveframework.com · Werner Müller</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">The Resilient Brain · The HAVE Framework · Werner Müller · thehaveframework.com</div>
+    <ul class="footer-links">
+      <li><a href="#science">The Science</a></li>
+      <li><a href="#method">The Method</a></li>
+      <li><a href="#venture">The Course</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#join">Join</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// Desktop section toggles
+function toggleDesktop(btn) {
+  const body = btn.nextElementSibling;
+  const open = body.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+
+// Bridge accordions
+function toggleBridgeAcc(btn) {
+  const body = btn.nextElementSibling;
+  const open = body.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+
+// Accordion
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const open = body.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+
+// Mobile nav
+function toggleMobileNav(btn) {
+  const nav = document.getElementById('nav-mobile');
+  nav.classList.toggle('open');
+}
+function closeMobileNav() {
+  document.getElementById('nav-mobile').classList.remove('open');
+}
+
+// Science tabs
+function showSci(el, id) {
+  document.querySelectorAll('.sci-row').forEach(r => r.classList.remove('active'));
+  el.classList.add('active');
+  const detail = document.getElementById('sci-detail');
+  detail.querySelectorAll('div[id^="sci-"]').forEach(d => d.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
+
+// Research toggles
+function toggleResearch(btn) {
+  const content = btn.nextElementSibling;
+  const open = content.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+
+// FAQ
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const open = answer.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+
+// Form
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  btn.textContent = 'You\'re on the list.';
+  btn.style.background = 'var(--blue-dk)';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
